@@ -1,0 +1,13 @@
+<adapter-config name="PurgeParallelDBAdapt" adapter="Database Adapter" wsdlLocation="PurgeParallelDBAdapt.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOADemoLocalTx" UIConnectionName="Soainfra" adapterRef=""/>
+  <endpoint-interaction portType="PurgeParallelDBAdapt_ptt" operation="PurgeParallelDBAdapt">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="SchemaName" value="DEV_SOAINFRA"/>
+      <property name="PackageName" value="BPEL_PURGEPARALLELDBADAPT1"/>
+      <property name="ProcedureName" value="SOA$DELETE_INSTANCES_IN_PARAL"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

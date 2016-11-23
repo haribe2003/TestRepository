@@ -1,0 +1,19 @@
+<schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/sp/PurgeParallelDBAdapt" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/sp/PurgeParallelDBAdapt" elementFormDefault="qualified">
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="MIN_CREATION_DATE" type="dateTime" db:index="1" db:type="TIMESTAMP" minOccurs="0" nillable="true"/>
+            <element name="MAX_CREATION_DATE" type="dateTime" db:index="2" db:type="TIMESTAMP" minOccurs="0" nillable="true"/>
+            <element name="BATCH_SIZE" type="int" db:index="3" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="MAX_RUNTIME" type="int" db:index="4" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="RETENTION_PERIOD" type="dateTime" db:index="5" db:type="TIMESTAMP" minOccurs="0" nillable="true"/>
+            <element name="DOP" type="int" db:index="6" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="MAX_COUNT" type="int" db:index="7" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="PURGE_PARTITIONED_COMPONENT" type="int" db:index="8" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="COMPOSITE_NAME" type="string" db:index="9" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="COMPOSITE_REVISION" type="string" db:index="10" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="SOA_PARTITION_NAME" type="string" db:index="11" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+</schema>

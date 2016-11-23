@@ -1,0 +1,256 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sat Nov 14 19:55:13 CST 2015
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="WFQueryBPELProcess"
+         targetNamespace="http://xmlns.oracle.com/Misc/WFQueries/WFQueryBPELProcess"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/Misc/WFQueries/WFQueryBPELProcess"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskQueryService"
+         xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://xmlns.oracle.com/bpel/workflow/common"
+         xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/taskQuery"
+         xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/taskService"
+         xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService"
+         xmlns:ns6="http://xmlns.oracle.com/bpel/workflow/task">
+
+    <import namespace="http://xmlns.oracle.com/Misc/WFQueries/WFQueryBPELProcess" location="WFQueryBPELProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="wfquerybpelprocess_client" partnerLinkType="client:WFQueryBPELProcess" myRole="WFQueryBPELProcessProvider" partnerRole="WFQueryBPELProcessRequester"/>
+        <partnerLink name="AuthenticationService"
+                     partnerLinkType="ns1:AuthenticationService"
+                     partnerRole="TaskQueryService"/>
+        <partnerLink name="TaskService" partnerLinkType="ns4:TaskService"
+                     partnerRole="TaskService"
+                     myRole="TaskServiceCallbackListener"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:WFQueryBPELProcessRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:WFQueryBPELProcessResponseMessage"/>
+        <variable name="Invoke_authenticate_InputVariable"
+                  messageType="ns1:authenticateMessage"/>
+        <variable name="Invoke_authenticate_OutputVariable"
+                  messageType="ns1:authenticateResponseMessage"/>
+        <variable name="Invoke_queryTasks_InputVariable"
+                  messageType="ns1:taskListRequestMessage"/>
+        <variable name="Invoke_queryTasks_OutputVariable"
+                  messageType="ns1:taskListResponseMessage"/>
+        <!--variable name="Invoke_Task_acquireTask_InputVariable"
+                  messageType="ns4:acquireTaskMessage"/>
+        <variable name="Invoke_Task_acquireTask_OutputVariable"
+                  messageType="ns4:taskMessage"/>
+        <variable name="Invoke_Task_Commit_updateTaskOutcome_InputVariable"
+                  messageType="ns4:updateTaskOutcomeMessage"/>
+        <variable name="Invoke_Task_Commit_updateTaskOutcome_OutputVariable"
+                  messageType="ns4:taskMessage"/-->
+        <variable name="Invoke_Task_Select_acquireTasks_InputVariable"
+                  messageType="ns4:acquireTasksMessage"/>
+        <variable name="Invoke_Task_Select_acquireTasks_OutputVariable"
+                  messageType="ns4:bulkOperationOutputMessage"/>
+        <variable name="Invoke_Task_Commit_updateOutcomeOfTasks_InputVariable"
+                  messageType="ns4:updateOutcomeOfTasksMessage"/>
+        <variable name="Invoke_Task_Commit_updateOutcomeOfTasks_OutputVariable"
+                  messageType="ns4:bulkOperationOutputMessage"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in WFQueryBPELProcess.wsdl) -->
+        <receive name="receiveInput" partnerLink="wfquerybpelprocess_client" portType="client:WFQueryBPELProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+        <assign name="Assign_Credentials">
+            <copy>
+                <from>"_svc_weblogic"</from>
+                <to>$Invoke_authenticate_InputVariable.payload/ns2:login</to>
+            </copy>
+            <copy>
+                <from>"9wpgQ7ZH"</from>
+                <to>$Invoke_authenticate_InputVariable.payload/ns2:password</to>
+            </copy>
+            <copy>
+                <from>"jazn.com"</from>
+                <to>$Invoke_authenticate_InputVariable.payload/ns2:identityContext</to>
+            </copy>
+            <copy>
+                <from>"_svc_weblogic"</from>
+                <to>$Invoke_authenticate_InputVariable.payload/ns2:onBehalfOfUser</to>
+            </copy>
+        </assign>
+        <invoke name="Invoke_Authentication"
+                partnerLink="AuthenticationService"
+                portType="ns1:TaskQueryService" operation="authenticate"
+                inputVariable="Invoke_authenticate_InputVariable"
+                outputVariable="Invoke_authenticate_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+        <assign name="Assign_QueryTasks">
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:token</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:token</to>
+            </copy>
+            <copy>
+                <from>true()</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:clause/@ignoreCase</to>
+            </copy>
+            <copy>
+                <from>"MY_AND_GROUP"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:assignmentFilter</to>
+            </copy>
+            <copy>
+                <from>"AND"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:clause/@joinOperator</to>
+            </copy>
+            <copy>
+                <from>"AND"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:predicate/ns3:rhs/ns3:clause/@joinOperator</to>
+            </copy>
+            <copy>
+                <from>"ACQUIREDBY"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:predicate/ns3:rhs/ns3:clause/ns3:column</to>
+            </copy>
+            <copy>
+                <from>"IS_NULL"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:predicate/ns3:rhs/ns3:clause/ns3:operator</to>
+            </copy>
+            <copy>
+                <from>"State"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:clause/ns3:column</to>
+            </copy>
+            <copy>
+                <from>"EQ"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:clause/ns3:operator</to>
+            </copy>
+            <copy>
+                <from>"ASSIGNED"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:clause/ns3:value</to>
+            </copy>
+            <copy>
+                <from>"AND"</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns3:taskPredicateQuery/ns3:predicate/ns3:predicate/ns3:logicalOperator</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:timeZone</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:timeZone</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:locale</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:locale</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:userDisplayName</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:userDisplayName</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:isAdmin</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:isAdmin</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:isBusinessAdmin</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:isBusinessAdmin</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:isManager</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:isManager</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:requester</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:requester</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:type</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:type</to>
+            </copy>
+            <copy>
+                <from>$Invoke_authenticate_OutputVariable.payload/ns2:credential</from>
+                <to>$Invoke_queryTasks_InputVariable.payload/ns2:workflowContext/ns2:credential</to>
+            </copy>
+        </assign>
+        <invoke name="Invoke_TaskQuery"
+                partnerLink="AuthenticationService"
+                portType="ns1:TaskQueryService" operation="queryTasks"
+                inputVariable="Invoke_queryTasks_InputVariable"
+                outputVariable="Invoke_queryTasks_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+        <assign name="Transform_TaskDetails">
+            <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:transformation"/>
+            </bpelx:annotation>
+            <copy>
+                <from>ora:doXSLTransformForDoc("xsl/Transform_TaskDetails_1.xsl", $Invoke_authenticate_OutputVariable.payload, "Invoke_queryTasks_OutputVariable.payload", $Invoke_queryTasks_OutputVariable.payload)</from>
+                <to variable="Invoke_Task_Select_acquireTasks_InputVariable"
+                    part="payload"/>
+            </copy>
+        </assign>
+        <invoke name="Invoke_Task_Select"
+                partnerLink="TaskService" portType="ns4:TaskService"
+                operation="acquireTasks"
+                inputVariable="Invoke_Task_Select_acquireTasks_InputVariable"
+                outputVariable="Invoke_Task_Select_acquireTasks_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+        <assign name="Transform_TaskCommit">
+            <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:transformation"/>
+            </bpelx:annotation>
+            <copy>
+                <from>ora:doXSLTransformForDoc("xsl/Transform_TaskCommit_1.xsl", $Invoke_Task_Select_acquireTasks_OutputVariable.payload)</from>
+                <to variable="Invoke_Task_Commit_updateOutcomeOfTasks_InputVariable"
+                    part="payload"/>
+            </copy>
+        </assign>
+        <invoke name="Invoke_Task_Commit"
+                partnerLink="TaskService" portType="ns4:TaskService"
+                operation="updateOutcomeOfTasks"
+                inputVariable="Invoke_Task_Commit_updateOutcomeOfTasks_InputVariable"
+                outputVariable="Invoke_Task_Commit_updateOutcomeOfTasks_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient" partnerLink="wfquerybpelprocess_client" portType="client:WFQueryBPELProcessCallback" operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="SOADev" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="SOADev" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1521</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>ln034e.homedepot.com</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>DEV_THD</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="serviceName">
+            <Contents>dad15ta</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="BAMServerConnection" className="oracle.tip.tools.ide.bam.rc.connection.BAMProviderImpl" credentialStoreKey="BAMServerConnection" xmlns="">
+      <Factory className="oracle.tip.tools.ide.bam.rc.connection.BAMProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="USER_NAME">
+            <Contents>_svc_weblogic</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="WEBTIER_SERVER_PORT">
+            <Contents>9001</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="EnableAppFlag">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="BAM_SERVER_HOST">
+            <Contents>wn04cc</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="WEBTIER_SERVER">
+            <Contents>wn04cc</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="CONNECTION_NAME">
+            <Contents>BAMServerConnection</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="BAM_SERVER_PORT">
+            <Contents>9001</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="BAM_WEBTIER_PROTOCOL">
+            <Contents>http</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="AppFlag">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="PASSWORD"/>
+         <StringRefAddr addrType="CONNECTION_MODE">
+            <Contents>BASIC</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

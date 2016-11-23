@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/ReadFrtTbl" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/ReadFrtTbl" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="FrtTrkPodRqstCollection" type="FrtTrkPodRqstCollection"/>
+   <xs:complexType name="FrtTrkPodRqstCollection">
+      <xs:sequence>
+         <xs:element name="FrtTrkPodRqst" type="FrtTrkPodRqst" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="FrtTrkPodRqst">
+      <xs:sequence>
+         <xs:element name="carrCd">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="frtTrkNbr">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="30"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="vchrNbr">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="6"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="ReadFrtTblSelect_frtTrckNumInputParameters" type="ReadFrtTblSelect_frtTrckNum"/>
+   <xs:complexType name="ReadFrtTblSelect_frtTrckNum">
+      <xs:sequence>
+         <xs:element name="frtTrckNum" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

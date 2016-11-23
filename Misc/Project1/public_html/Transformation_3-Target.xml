@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:SlsTaxCltRptCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/US122Writetest">
+   <top:SlsTaxCltRpt>
+      <top:crtSysusrId>_SVC_WEBLOGIC</top:crtSysusrId>
+      <top:crtTs>2015-01-06T22:47:03.741-05:00</top:crtTs>
+      <top:fileCrtDt>2015-01-06T22:28:33.820</top:fileCrtDt>
+   </top:SlsTaxCltRpt>
+</top:SlsTaxCltRptCollection>

@@ -1,0 +1,156 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sat Oct 22 16:12:17 EDT 2016
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="UpdateCarrToBpel"
+               targetNamespace="http://xmlns.oracle.com/Misc/UpdateCarrierToFile/UpdateCarrToBpel"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/UpdateCarrierToFile/UpdateCarrToBpel"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/UpdateCarrierToFile/ReadCarrierTo"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/UpdateCarrierToFile/ReadPermFrtTables"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:ns3="http://TargetNamespace.com/FileRequiresUpdate"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/ReadPermFrtTables"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/UpdateCarrierToFile/WriteUpdatedC2"
+         xmlns:ns6="http://TargetNamespace.com/ServiceName"
+         xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/UpdateCarrierToFile/WriteUpdatedC2File"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/bam/Misc/UpdateCarrierToFile/Test">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="ReadCarrierTo" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="ReadPermFrtTables"
+                 partnerLinkType="ns2:ReadPermFrtTables_plt"
+                 partnerRole="ReadPermFrtTables_role"/>
+    <partnerLink name="WriteUpdatedC2File" partnerLinkType="ns7:Write_plt"
+                 partnerRole="Write_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Receive_Read_InputVariable" messageType="ns1:Read_msg"/>
+    <variable name="fileNameIn" type="xsd:string"/>
+    <variable name="fileNameOut" type="xsd:string"/>
+    <variable name="InvokeReadDB_ReadPermFrtTables_InputVariable"
+              messageType="ns2:ReadPermFrtTablesInput_msg"/>
+    <variable name="InvokeReadDB_ReadPermFrtTables_OutputVariable"
+              messageType="ns2:ReadPermFrtTablesOutputCollection_msg"/>
+    <variable name="InvokeWriteDBAdapter_Write_InputVariable"
+              messageType="ns7:Write_msg"/>
+    <variable name="InvokeWriteDBAdapter_Write_OutputVariable"
+              messageType="ns7:Output_msg"/>
+    <variable name="Invoke1_writetoBAM_InputVariable"
+              messageType="ns8:_BI_DEFAULT_UPDATECARRIERTOFILCollection_msg"/>
+  </variables>
+  <sequence name="main">
+    <receive name="Receive" createInstance="yes" partnerLink="ReadCarrierTo"
+             portType="ns1:Read_ptt" operation="Read"
+             variable="Receive_Read_InputVariable">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName" variable="fileNameIn"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="AssignFileName">
+      <copy>
+        <from>concat(substring-before($fileNameIn,2),'_',xp20:format-dateTime(xp20:current-dateTime(),'[Y0001][M01][D01][H01][m01][s01]'),'.txt')</from>
+        <to>$fileNameOut</to>
+      </copy>
+    </assign>
+    <forEach parallel="no" counterName="EachFrtNum"
+             name="ForEachFrtTblNumInTheFile">
+      <bpelx:skipCondition>count($Receive_Read_InputVariable.body/ns3:CarrierToReadRecord) &lt;= 0</bpelx:skipCondition>
+      <startCounterValue>1</startCounterValue>
+      <finalCounterValue>count($Receive_Read_InputVariable.body/ns3:CarrierToReadRecord)</finalCounterValue>
+      <scope name="Scope1">
+        <sequence name="Sequence1">
+          <assign name="AssignFrtNum">
+            <copy>
+              <from>$Receive_Read_InputVariable.body/ns3:CarrierToReadRecord[$EachFrtNum]/ns3:FrtTrkN</from>
+              <to>$InvokeReadDB_ReadPermFrtTables_InputVariable.ReadPermFrtTablesInput_msg/ns4:iFrtTrkNum</to>
+            </copy>
+          </assign>
+          <invoke name="InvokeReadDB"
+                  partnerLink="ReadPermFrtTables"
+                  portType="ns2:ReadPermFrtTables_ptt"
+                  operation="ReadPermFrtTables"
+                  inputVariable="InvokeReadDB_ReadPermFrtTables_InputVariable"
+                  outputVariable="InvokeReadDB_ReadPermFrtTables_OutputVariable"
+                  bpelx:invokeAsDetail="no"/>
+          <forEach parallel="no" counterName="ForEachVchrNbr"
+                   name="ForEachVchrNbr">
+            <bpelx:skipCondition>count($InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput) &lt;= 0</bpelx:skipCondition>
+            <startCounterValue>1</startCounterValue>
+            <finalCounterValue>count($InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput)</finalCounterValue>
+            <scope name="Scope2">
+              <sequence name="Sequence2">
+                <assign name="AssignWrite">
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:VCHR_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:vchrNbr</to>
+                  </copy>
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:INVC_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:invcNbr</to>
+                  </copy>
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:PVNDR_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:pvndrNbr</to>
+                  </copy>
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:PO_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:poNbr</to>
+                  </copy>
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:LOC_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:locNbr</to>
+                  </copy>
+                  <copy>
+                    <from>$InvokeReadDB_ReadPermFrtTables_OutputVariable.ReadPermFrtTablesOutputCollection/ns4:ReadPermFrtTablesOutput[$ForEachVchrNbr]/ns4:FRT_TRK_NBR</from>
+                    <to>$InvokeWriteDBAdapter_Write_InputVariable.body/ns6:CarrierToNewOutput/ns6:frtTrckNbr</to>
+                  </copy>
+                </assign>
+                <invoke name="InvokeWriteDBAdapter"
+                        partnerLink="WriteUpdatedC2File"
+                        portType="ns7:Write_ptt" operation="Write"
+                        inputVariable="InvokeWriteDBAdapter_Write_InputVariable"
+                        outputVariable="InvokeWriteDBAdapter_Write_OutputVariable"
+                        bpelx:invokeAsDetail="no">
+                  <bpelx:toProperties>
+                    <bpelx:toProperty name="jca.file.FileName"
+                                      variable="fileNameOut"/>
+                  </bpelx:toProperties>
+                </invoke>
+              </sequence>
+            </scope>
+          </forEach>
+        </sequence>
+      </scope>
+    </forEach>
+  </sequence>
+</process>

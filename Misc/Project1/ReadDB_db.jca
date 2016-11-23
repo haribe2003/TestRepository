@@ -1,0 +1,15 @@
+<adapter-config name="ReadDB" adapter="Database Adapter" wsdlLocation="ReadDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="SOADev" UIConnectionName="SOADev" adapterRef=""/>
+  <endpoint-interaction portType="ReadDB_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="ReadDB.SlsTaxCltRpt"/>
+      <property name="DmlType" value="insert"/>
+      <property name="OutputCompletedXml" value="true"/>
+      <property name="MappingsMetaDataURL" value="ReadDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,101 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Nov 02 11:15:44 EST 2015
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess"
+               targetNamespace="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension">
+
+  <import namespace="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess" location="BPELProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bpelprocess_client" partnerLinkType="client:BPELProcess" myRole="BPELProcessProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BPELProcessRequestMessage"/>
+
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="bpelprocess_client" portType="client:BPELProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+    <extensionActivity>
+      <bpelx:exec name="Java_Embedding1" language="java">
+        <![CDATA[/*Write your java code below e.g.  
+	System.out.println("Hello, World"); 
+*/ 
+try{ 
+java.util.Properties prop = new java.util.Properties(); 
+java.io.InputStream input = null; 
+ 
+         try { 
+           // input = new FileInputStream("./config.properties"); 
+            input = new java.io.FileInputStream("H:\\Imaging\\ia\\bin\\properties\\purgeConfig.properties"); 
+            prop.load(input); 
+ 
+            //Set has the Source paths present on the config.properties file 
+            java.util.Set<String> s = prop.stringPropertyNames(); 
+ 
+            //For each stored Source paths 
+            for (String dayInString : s) { 
+                System.out.println("Property Name of the Day String : " + 
+                                   dayInString); 
+ 
+                //Getting the Destination path for the Sorce path 
+                String directoryPath = prop.getProperty(dayInString); 
+                System.out.println("Path:" + prop.getProperty(dayInString)); 
+ 
+               int numberOfdays = getNumberOfDays(dayInString); // This is string property name value from the config file which is the value before : 
+                                 
+                //Call purgeFilesOlderThanNdays to delete the file based on the number of days parameter you pass 
+                purgeFilesOlderThanNdays(numberOfdays, directoryPath); 
+            } 
+ 
+        } catch (IOException ex) { 
+            ex.printStackTrace(); 
+ 
+} 
+catch(Exception lastExcp) { //Catch exception if any    
+            lastExcp.printStackTrace(); 
+}]]>
+      </bpelx:exec>
+    </extensionActivity>
+  </sequence>
+</process>

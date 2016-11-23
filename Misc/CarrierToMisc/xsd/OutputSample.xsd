@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://TargetNamespace.com/ServiceName"
+            targetNamespace="http://TargetNamespace.com/ServiceName"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="US-ASCII"
+>
+
+
+  <xsd:element name="CarrierToNewRoot-Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="CarrierToNewOutput" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="frtTrckNum" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=";" nxsd:quotedBy="&quot;" />
+              <xsd:element name="invcNbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=";" nxsd:quotedBy="&quot;" />
+              <xsd:element name="poNbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=";" nxsd:quotedBy="&quot;" />
+              <xsd:element name="pvndrNbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=";" nxsd:quotedBy="&quot;" />
+              <xsd:element name="vchrNbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
+<!--NXSDWIZ:C:\JDeveloper\mywork\Misc\CarrierToMisc\samples\OutputSample.txt:-->
+<!--USE-HEADER:false:-->

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FrtTrkPodRqstCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/ReadFrtTbl">
+   <FrtTrkPodRqst>
+      <carrCd>stri</carrCd>
+      <frtTrkNbr>string3</frtTrkNbr>
+      <vchrNbr>string</vchrNbr>
+   </FrtTrkPodRqst>
+   <FrtTrkPodRqst>
+      <carrCd>stri</carrCd>
+      <frtTrkNbr>string9</frtTrkNbr>
+      <vchrNbr>string</vchrNbr>
+   </FrtTrkPodRqst>
+   <FrtTrkPodRqst>
+      <carrCd>stri</carrCd>
+      <frtTrkNbr>string15</frtTrkNbr>
+      <vchrNbr>string</vchrNbr>
+   </FrtTrkPodRqst>
+</FrtTrkPodRqstCollection>

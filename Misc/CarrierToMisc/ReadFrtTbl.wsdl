@@ -1,0 +1,25 @@
+<?binding.jca ReadFrtTbl_db.jca?>
+<wsdl:definitions name="ReadFrtTbl" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/CarrierToMisc/ReadFrtTbl" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/CarrierToMisc/ReadFrtTbl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/ReadFrtTbl">
+    <plt:partnerLinkType name="ReadFrtTbl_plt">
+        <plt:role name="ReadFrtTbl_role">
+            <plt:portType name="tns:ReadFrtTbl_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/ReadFrtTbl" schemaLocation="xsd/ReadFrtTbl_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ReadFrtTblSelect_inputParameters">
+        <wsdl:part name="ReadFrtTblSelect_inputParameters" element="top:ReadFrtTblSelect_frtTrckNumInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="FrtTrkPodRqstCollection_msg">
+        <wsdl:part name="FrtTrkPodRqstCollection" element="top:FrtTrkPodRqstCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="ReadFrtTbl_ptt">
+        <wsdl:operation name="ReadFrtTblSelect">
+            <wsdl:input message="tns:ReadFrtTblSelect_inputParameters"/>
+            <wsdl:output message="tns:FrtTrkPodRqstCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

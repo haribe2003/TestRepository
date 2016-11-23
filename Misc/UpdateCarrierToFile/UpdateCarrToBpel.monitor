@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MonitorModel id="1" xmlns="http://www.oracle.com/bpel/v2/monitor">
+    <MonitorObjects id="2">
+        <ComponentPath name="ComponentPath_1" enabled="true" id="3"/>
+        <Indicators id="4">
+            <Indicator id="11" name="IndicatorRec" enabled="true">
+                <ActivityUsages id="12">
+                    <ActivityUsage id="13" activityName="Receive">
+                        <EvaluationEvent>activate</EvaluationEvent>
+                    </ActivityUsage>
+                </ActivityUsages>
+                <MetricElements id="14">
+                    <MetricElement id="18" name="Metric1" dataType="double" xpath="count($Receive_Read_InputVariable.body/ns3:CarrierToReadRecord/ns3:FrtTrkN)"/>
+                </MetricElements>
+            </Indicator>
+            <Indicator id="19" name="Indicator1" enabled="true">
+                <ActivityUsages id="20">
+                    <ActivityUsage id="21" activityName="ForEachVchrNbr">
+                        <EvaluationEvent>activate</EvaluationEvent>
+                    </ActivityUsage>
+                </ActivityUsages>
+                <MetricElements id="22"/>
+            </Indicator>
+        </Indicators>
+        <Paths id="5"/>
+        <ActivityPath id="10" enabled="true" mode="all"/>
+        <Counters id="6"/>
+    </MonitorObjects>
+    <Config id="7">
+        <FeatureSwitches enabled="true" id="8"></FeatureSwitches>
+        <DataBases id="9"></DataBases>
+    </Config>
+</MonitorModel>

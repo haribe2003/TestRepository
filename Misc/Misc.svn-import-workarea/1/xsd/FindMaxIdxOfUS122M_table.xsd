@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/FindMaxIdxOfUS122M" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/FindMaxIdxOfUS122M" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SlsTaxCltRptCollection" type="SlsTaxCltRptCollection"/>
+   <xs:complexType name="SlsTaxCltRptCollection">
+      <xs:sequence>
+         <xs:element name="SlsTaxCltRpt" type="SlsTaxCltRpt" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SlsTaxCltRpt">
+      <xs:sequence>
+         <xs:element name="slsTaxCltId" type="xs:long"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="FindMaxIdxOfUS122MSelectInputParameters" type="FindMaxIdxOfUS122MSelect"/>
+   <xs:complexType name="FindMaxIdxOfUS122MSelect">
+      <xs:sequence/>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,25 @@
+<?binding.jca ReadPermFrtTables_db.jca?>
+<wsdl:definitions name="ReadPermFrtTables" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/UpdateCarrierToFile/ReadPermFrtTables" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/ReadPermFrtTables" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/UpdateCarrierToFile/ReadPermFrtTables" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="ReadPermFrtTables_plt">
+        <plt:role name="ReadPermFrtTables_role">
+            <plt:portType name="tns:ReadPermFrtTables_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/ReadPermFrtTables" schemaLocation="xsd/ReadPermFrtTables.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ReadPermFrtTablesInput_msg">
+        <wsdl:part name="ReadPermFrtTablesInput_msg" element="db:ReadPermFrtTablesInput"/>
+    </wsdl:message>
+    <wsdl:message name="ReadPermFrtTablesOutputCollection_msg">
+        <wsdl:part name="ReadPermFrtTablesOutputCollection" element="db:ReadPermFrtTablesOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="ReadPermFrtTables_ptt">
+        <wsdl:operation name="ReadPermFrtTables">
+            <wsdl:input message="tns:ReadPermFrtTablesInput_msg"/>
+            <wsdl:output message="tns:ReadPermFrtTablesOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

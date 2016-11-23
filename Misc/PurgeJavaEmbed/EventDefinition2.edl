@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://schemas.oracle.com/events/edl"
+             targetNamespace="http://xmlns.oracle.com/PurgeJavaEmbed/EventDefinition2">
+    <schema-import location="xsd/BPELProcess1.xsd"
+                   namespace="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess1"/>
+    <schema-import location="xsd/DecisionServicePrimitiveTypes.xsd"
+                   namespace="http://xmlns.oracle.com/bpel/rules"/>
+    <event-definition name="Event1">
+        <content xmlns:ns0="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess1"
+                 element="ns0:processResponse"/>
+    </event-definition>
+    <event-definition name="Event2">
+        <content xmlns:ns1="http://xmlns.oracle.com/bpel/rules"
+                 element="ns1:boolean"/>
+    </event-definition>
+</definitions>

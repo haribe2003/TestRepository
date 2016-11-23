@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workflowContext xmlns="http://xmlns.oracle.com/bpel/workflow/common">
+   <credential>
+      <login>login1</login>
+      <password>password2</password>
+      <identityContext>identityContext3</identityContext>
+      <onBehalfOfUser>onBehalfOfUser4</onBehalfOfUser>
+   </credential>
+   <token>token5</token>
+   <locale>locale6</locale>
+   <timeZone>timeZone7</timeZone>
+   <displayNameLocale>displayNameLocale8</displayNameLocale>
+   <userDisplayName>userDisplayName9</userDisplayName>
+   <isAdmin>true</isAdmin>
+   <isBusinessAdmin>true</isBusinessAdmin>
+   <isManager>true</isManager>
+   <requester>requester10</requester>
+   <type>type11</type>
+   <properties>
+      <property>
+         <name>name12</name>
+         <value>value13</value>
+      </property>
+      <property>
+         <name>name14</name>
+         <value>value15</value>
+      </property>
+      <property>
+         <name>name16</name>
+         <value>value17</value>
+      </property>
+   </properties>
+</workflowContext>

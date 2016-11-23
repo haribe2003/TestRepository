@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<RuleDictionary id="G}44124c2a:15766e9ceeb:-7c2c" xmlns="http://xmlns.oracle.com/rules/dictionary">
+    <Name>OracleRules3</Name>
+    <Alias>OracleRules3</Alias>
+    <Package>purgejavaembed</Package>
+    <Version>11.1.1.0.0</Version>
+    <DataModel id="L}1">
+        <CreationUpdateNumber>2</CreationUpdateNumber>
+        <SupportsXPathEnabled>false</SupportsXPathEnabled>
+        <UpdateNumber>1</UpdateNumber>
+        <ValidationUpdateNumber>1</ValidationUpdateNumber>
+        <UpdateTime>-9223372036854775808</UpdateTime>
+    </DataModel>
+    <RuleSet id="G}44124c2a:15766e9ceeb:-7c2b">
+        <Name>Ruleset1</Name>
+        <Alias>Ruleset1</Alias>
+        <ValidationUpdateNumber>4</ValidationUpdateNumber>
+        <Customizable>true</Customizable>
+        <Active>true</Active>
+        <CalendarForm>DateTime</CalendarForm>
+        <VisibilityFilterEnabled>false</VisibilityFilterEnabled>
+        <CreationUpdateNumber>4</CreationUpdateNumber>
+    </RuleSet>
+    <ValidationUpdateNumber>4</ValidationUpdateNumber>
+    <UpdateNumber>4</UpdateNumber>
+    <ResourceBundle>OracleRules3Translations</ResourceBundle>
+</RuleDictionary>

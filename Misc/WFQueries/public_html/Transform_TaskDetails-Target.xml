@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:acquireTask xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/taskService">
+   <common:workflowContext xmlns:common="http://xmlns.oracle.com/bpel/workflow/common">
+      <common:token>token5</common:token>
+   </common:workflowContext>
+   <ns5:taskId>taskId4763</ns5:taskId>
+   <ns5:taskId>taskId5145</ns5:taskId>
+   <ns5:taskId>taskId5527</ns5:taskId>
+</ns5:acquireTask>

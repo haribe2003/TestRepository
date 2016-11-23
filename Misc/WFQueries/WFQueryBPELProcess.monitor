@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MonitorModel id="1" xmlns="http://www.oracle.com/bpel/v2/monitor">
+    <MonitorObjects id="2">
+        <ComponentPath name="ComponentPath_1" enabled="true" id="3"/>
+        <Indicators id="4">
+            <Indicator id="10" name="BI_TaskDetails" enabled="false">
+                <ActivityUsages id="11"></ActivityUsages>
+                <MetricElements id="13">
+                    <MetricElement id="14" name="BI_TaskID" dataType="string" xpath="&quot;$Invoke_queryTasks_OutputVariable.payload/ns4:task/ns4:systemAttributes/ns4:taskId&quot;"/>
+                </MetricElements>
+            </Indicator>
+        </Indicators>
+        <Paths id="5"/>
+        <Counters id="6"/>
+    </MonitorObjects>
+    <Config id="7">
+        <FeatureSwitches enabled="true" id="8"/>
+        <DataBases id="9"/>
+    </Config>
+</MonitorModel>

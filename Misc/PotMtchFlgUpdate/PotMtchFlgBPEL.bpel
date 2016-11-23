@@ -1,0 +1,210 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Aug 09 11:15:04 EDT 2016
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="PotMtchFlgBPEL"
+               targetNamespace="http://xmlns.oracle.com/Misc/PotMtchFlgUpdate/PotMtchFlgBPEL"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/PotMtchFlgUpdate/PotMtchFlgBPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskQueryService"
+         xmlns:ns2="http://xmlns.oracle.com/bpel/workflow/taskService"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/common"
+         xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService"
+         xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/task">
+
+  <import namespace="http://xmlns.oracle.com/Misc/PotMtchFlgUpdate/PotMtchFlgBPEL" location="PotMtchFlgBPEL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="potmtchflgbpel_client" partnerLinkType="client:PotMtchFlgBPEL" myRole="PotMtchFlgBPELProvider"/>
+    <partnerLink name="AuthenticationTaskQuery"
+                 partnerLinkType="ns1:AuthenticationTaskQuery"
+                 partnerRole="TaskQueryService"/>
+    <partnerLink name="TaskServices" partnerLinkType="ns2:TaskService"
+                 partnerRole="TaskService"
+                 myRole="TaskServiceCallbackListener"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:PotMtchFlgBPELRequestMessage"/>
+    <variable name="Invoke_getToken_authenticate_InputVariable"
+              messageType="ns1:authenticateMessage"/>
+    <variable name="Invoke_getToken_authenticate_OutputVariable"
+              messageType="ns1:authenticateResponseMessage"/>
+    <variable name="Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable"
+              messageType="ns1:taskDetailsByIdRequestMessage"/>
+    <variable name="Invoke_getTaskDetailsById_getTaskDetailsById_OutputVariable"
+              messageType="ns1:taskDetailsResponseMessage"/>
+    <variable name="Invoke_AcquireTask_InputVariable"
+              messageType="ns2:acquireTaskMessage"/>
+    <variable name="Invoke_AcquireTask_OutputVariable"
+              messageType="ns2:taskMessage"/>
+    <variable name="Invoke_ReleaseTask_InputVariable"
+              messageType="ns2:releaseTaskMessage"/>
+    <variable name="Invoke_ReleaseTask_OutputVariable"
+              messageType="ns2:taskMessage"/>
+    <variable name="Invoke_MergeUpdate_InputVariable"
+              messageType="ns2:mergeAndUpdateTaskMessage"/>
+    <variable name="Invoke_MergeUpdate_OutputVariable"
+              messageType="ns2:taskMessage"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in PotMtchFlgBPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="potmtchflgbpel_client" portType="client:PotMtchFlgBPEL" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="Assign_Credentials">
+      <copy>
+        <from>"_svc_weblogic"</from>
+        <to>$Invoke_getToken_authenticate_InputVariable.payload/ns3:login</to>
+      </copy>
+      <copy>
+        <from>"9wpgQ7ZH"</from>
+        <to>$Invoke_getToken_authenticate_InputVariable.payload/ns3:password</to>
+      </copy>
+      <copy>
+        <from>"jazn.com"</from>
+        <to>$Invoke_getToken_authenticate_InputVariable.payload/ns3:identityContext</to>
+      </copy>
+      <copy>
+        <from>"_svc_weblogic"</from>
+        <to>$Invoke_getToken_authenticate_InputVariable.payload/ns3:onBehalfOfUser</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke_getToken"
+            partnerLink="AuthenticationTaskQuery"
+            portType="ns1:TaskQueryService" operation="authenticate"
+            inputVariable="Invoke_getToken_authenticate_InputVariable"
+            outputVariable="Invoke_getToken_authenticate_OutputVariable"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="Assign_TaskQueryOutput">
+      <copy>
+        <from>$Invoke_getToken_authenticate_OutputVariable.payload</from>
+        <to>$Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable.payload/ns3:workflowContext</to>
+      </copy>
+      <copy>
+        <from>"5000af4f-10d0-4161-8e39-da031fa76194"</from>
+        <to>$Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable.payload/ns1:taskId</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke_getTaskDetailsById"
+            partnerLink="AuthenticationTaskQuery"
+            portType="ns1:TaskQueryService" operation="getTaskDetailsById"
+            inputVariable="Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable"
+            outputVariable="Invoke_getTaskDetailsById_getTaskDetailsById_OutputVariable"
+            bpelx:invokeAsDetail="no"/>
+    <if name="If_AlreadyAcquired">
+      <condition>string-length($Invoke_getTaskDetailsById_getTaskDetailsById_OutputVariable.payload/ns4:systemAttributes/ns4:acquiredBy)=0</condition>
+      <sequence name="Sequence1">
+        <assign name="Assign_AcquireTask">
+          <copy>
+            <from>$Invoke_getToken_authenticate_OutputVariable.payload/ns3:token</from>
+            <to>$Invoke_AcquireTask_InputVariable.payload/ns3:workflowContext/ns3:token</to>
+          </copy>
+          <copy>
+            <from>$Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable.payload/ns1:taskId</from>
+            <to>$Invoke_AcquireTask_InputVariable.payload/ns2:taskId</to>
+          </copy>
+        </assign>
+        <invoke name="Invoke_AcquireTask" partnerLink="TaskServices"
+                portType="ns2:TaskService" operation="acquireTask"
+                inputVariable="Invoke_AcquireTask_InputVariable"
+                outputVariable="Invoke_AcquireTask_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+        <assign name="Assign_MergeUpdate">
+          <copy>
+            <from>$Invoke_getToken_authenticate_OutputVariable.payload</from>
+            <to>$Invoke_MergeUpdate_InputVariable.payload/ns3:workflowContext</to>
+          </copy>
+          <copy>
+            <from>$Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable.payload/ns1:taskId</from>
+            <to>$Invoke_MergeUpdate_InputVariable.payload/ns4:task/ns4:evidence/ns5:taskId</to>
+          </copy>
+          <copy>
+            <from>concat($Invoke_MergeUpdate_InputVariable.payload/ns4:task/ns4:systemMessageAttributes/ns4:protectedTextAttribute3,'100')</from>
+            <to>$Invoke_MergeUpdate_InputVariable.payload/ns4:task/ns4:systemMessageAttributes/ns4:protectedTextAttribute3</to>
+          </copy>
+        </assign>
+        <assign name="Transform1">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:transformation"/>
+          </bpelx:annotation>
+          <copy>
+            <from>ora:doXSLTransformForDoc("xsl/Transformation_1.xsl", $Invoke_AcquireTask_OutputVariable.payload)</from>
+            <to variable="Invoke_MergeUpdate_InputVariable" part="payload"/>
+          </copy>
+        </assign>
+        <invoke name="Invoke_MergeUpdate"
+                partnerLink="TaskServices" portType="ns2:TaskService"
+                operation="mergeAndUpdateTask"
+                inputVariable="Invoke_MergeUpdate_InputVariable"
+                outputVariable="Invoke_MergeUpdate_OutputVariable"
+                bpelx:invokeAsDetail="no"/>
+      </sequence>
+      <else>
+        <sequence name="Sequence2">
+          <empty name="Nothing"/>
+        </sequence>
+      </else>
+    </if>
+    <assign name="Assign_ReleaseTask">
+      <copy>
+        <from>$Invoke_getToken_authenticate_OutputVariable.payload/ns3:token</from>
+        <to>$Invoke_ReleaseTask_InputVariable.payload/ns3:workflowContext/ns3:token</to>
+      </copy>
+      <copy>
+        <from>$Invoke_getTaskDetailsById_getTaskDetailsById_InputVariable.payload/ns1:taskId</from>
+        <to>$Invoke_ReleaseTask_InputVariable.payload/ns2:taskId</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke_ReleaseTask" partnerLink="TaskServices"
+            portType="ns2:TaskService" operation="releaseTask"
+            inputVariable="Invoke_ReleaseTask_InputVariable"
+            outputVariable="Invoke_ReleaseTask_OutputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

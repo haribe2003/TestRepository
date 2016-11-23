@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="FRT_TRK_POD_RQST.CARR_CD:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.CARR_CD:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.VCHR_NBR:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_RCVD_FLG:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.VCHR_NBR:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.FRT_TRK_NBR:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_CNFM_FLG:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.LAST_UPD_PGM_ID:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST.LAST_UPD_PGM_ID:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_SNT_FLG:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.CARR_CD:db_column_size">4</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_7">POD_CNFM_FLG</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_6">POD_RQST_RCVD_FLG</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_5">POD_RQST_SNT_FLG</entry>
+   <entry key="FRT_TRK_POD_RQST.VCHR_NBR:db_column_size">6</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_4">LAST_UPD_TS</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_3">LAST_UPD_PGM_ID</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_2">VCHR_NBR</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_RCVD_FLG:db_column_size">1</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_1">FRT_TRK_NBR</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_SNT_FLG:db_column_type">VARCHAR2</entry>
+   <entry key="FRT_TRK_POD_RQST:db_column_0">CARR_CD</entry>
+   <entry key="FRT_TRK_POD_RQST.FRT_TRK_NBR:db_column_size">30</entry>
+   <entry key="FRT_TRK_POD_RQST:db_table_type">TABLE</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_CNFM_FLG:db_column_size">1</entry>
+   <entry key="FRT_TRK_POD_RQST.LAST_UPD_PGM_ID:db_column_size">18</entry>
+   <entry key="root_descriptor_alias">FRT_TRK_POD_RQST</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_CNFM_FLG:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.LAST_UPD_TS:db_column_type">TIMESTAMP(6)</entry>
+   <entry key="FRT_TRK_POD_RQST.LAST_UPD_TS:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_RCVD_FLG:db_column_not_null">true</entry>
+   <entry key="FRT_TRK_POD_RQST.POD_RQST_SNT_FLG:db_column_size">1</entry>
+   <entry key="FRT_TRK_POD_RQST.FRT_TRK_NBR:db_column_not_null">true</entry>
+</properties>

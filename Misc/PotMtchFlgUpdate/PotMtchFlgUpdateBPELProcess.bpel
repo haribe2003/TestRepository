@@ -1,0 +1,66 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Aug 10 16:30:59 EDT 2016
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="PotMtchFlgUpdateBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/Misc/PotMtchFlgUpdate/PotMtchFlgUpdateBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/PotMtchFlgUpdate/PotMtchFlgUpdateBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/PotMtchFlgUpdate/PotMtchFlg_FileAdapter"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/jms/Misc/PotMtchFlgUpdate/UpdatePotMtchFlg"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/jms/Misc/PotMtchFlgUpdate/PotMtchFlg"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/jms/Misc/PotMtchFlgUpdate/UpdatePotMtchFlgJMS">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="PotMtchFlg_FileAdapter" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="UpdatePotMtchFlgJMS"
+                 partnerLinkType="ns4:Produce_Message_plt"
+                 partnerRole="Produce_Message_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Receive_Read_InputVariable" messageType="ns1:Read_msg"/>
+    <!--variable name="Invoke_JMS_Produce_Message_InputVariable"
+              messageType="ns2:Produce_Message_msg"/>
+    <variable name="Invoke1_Produce_Message_InputVariable"
+              messageType="ns3:Produce_Message_msg"/-->
+    <variable name="Invoke_JMS_Produce_Message_InputVariable"
+              messageType="ns4:Produce_Message_msg"/>
+  </variables>
+  <sequence name="main">
+    <receive name="Receive" createInstance="yes"
+             partnerLink="PotMtchFlg_FileAdapter" portType="ns1:Read_ptt"
+             operation="Read" variable="Receive_Read_InputVariable"/>
+    <assign name="Transform_ReadFileToJMS">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"/>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("xsl/Transformation_jms.xsl", $Receive_Read_InputVariable.body)</from>
+        <to variable="Invoke_JMS_Produce_Message_InputVariable" part="body"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke_JMS"
+            partnerLink="UpdatePotMtchFlgJMS"
+            portType="ns4:Produce_Message_ptt" operation="Produce_Message"
+            inputVariable="Invoke_JMS_Produce_Message_InputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

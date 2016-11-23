@@ -1,0 +1,96 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Dec 23 22:33:35 EST 2014
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess"
+               targetNamespace="http://xmlns.oracle.com/Misc/Misc/BPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/Misc/BPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/Misc/US122M_PSV_File"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/Misc/FindMaxIdxOfUS122M"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/Misc/US122M"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/top/US122M"
+         xmlns:ns4="http://TargetNamespace.com/US122M_PSV_File"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/top/FindMaxIdxOfUS122M"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/Misc/FI890"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/Misc/FI890_File"
+         xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/Misc/US122">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="US122M_PSV_File" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="FI890" partnerLinkType="ns7:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="FI890_File" partnerLinkType="ns8:Write_plt"
+                 partnerRole="Write_role"/>
+    <partnerLink name="US122" partnerLinkType="ns9:Write_plt"
+                 partnerRole="Write_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="OnMessage_Read_InputVariable" messageType="ns1:Read_msg"/>
+    <variable name="OnMessage_Read_InputVariable_FI890"
+              messageType="ns7:Read_msg"/>
+    <variable name="Invoke1_Write_InputVariable" messageType="ns9:Write_msg"/>
+    <variable name="Invoke2_Write_InputVariable" messageType="ns8:Write_msg"/>
+  </variables>
+  <sequence name="main">
+    <pick name="Pick" createInstance="yes">
+      <onMessage variable="OnMessage_Read_InputVariable"
+                 partnerLink="US122M_PSV_File" portType="ns1:Read_ptt"
+                 operation="Read">
+        <sequence name="Sequence1">
+          <assign name="Transform1">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"/>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("xsl/Transformation_1.xsl", $OnMessage_Read_InputVariable.body)</from>
+              <to variable="Invoke1_Write_InputVariable" part="body"/>
+            </copy>
+          </assign>
+          <invoke name="Invoke1" partnerLink="US122"
+                  portType="ns9:Write_ptt" operation="Write"
+                  inputVariable="Invoke1_Write_InputVariable"
+                  bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </onMessage>
+      <onMessage variable="OnMessage_Read_InputVariable_FI890"
+                 partnerLink="FI890" portType="ns7:Read_ptt" operation="Read">
+        <sequence name="Sequence2">
+          <assign name="Transform2">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"/>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("xsl/Transformation_2.xsl", $OnMessage_Read_InputVariable_FI890.body)</from>
+              <to variable="Invoke2_Write_InputVariable" part="body"/>
+            </copy>
+          </assign>
+          <invoke name="Invoke2" partnerLink="FI890_File"
+                  portType="ns8:Write_ptt" operation="Write"
+                  inputVariable="Invoke2_Write_InputVariable"
+                  bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </onMessage>
+    </pick>
+  </sequence>
+</process>

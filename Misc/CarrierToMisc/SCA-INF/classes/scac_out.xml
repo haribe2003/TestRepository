@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>115</line>
+      <col/>
+      <file>AddMoreColumnsBpel.bpel</file>
+      <name>AddMoreColumnsBpel.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "ns4:FrtTrkPodRqstCollection" is not compatible with to-spec of "xsd:string"</msg>
+   </Fault>
+</Faults>

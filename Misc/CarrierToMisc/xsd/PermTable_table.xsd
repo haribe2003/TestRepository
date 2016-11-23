@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PermTable" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/PermTable" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="InvcMtchExcptCollection" type="InvcMtchExcptCollection"/>
+   <xs:complexType name="InvcMtchExcptCollection">
+      <xs:sequence>
+         <xs:element name="InvcMtchExcpt" type="InvcMtchExcpt" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="InvcMtchExcpt">
+      <xs:sequence>
+         <xs:element name="invcMtchExcptId" type="xs:long"/>
+         <xs:element name="invcNbr" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="22"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poNbr" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="25"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pvndrNbr" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="10"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="vchrNbr" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="6"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="PermTableSelect_vchrNbrInputParameters" type="PermTableSelect_vchrNbr"/>
+   <xs:complexType name="PermTableSelect_vchrNbr">
+      <xs:sequence>
+         <xs:element name="vchrNbr" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

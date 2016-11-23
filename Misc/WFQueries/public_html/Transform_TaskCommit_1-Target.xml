@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:updateOutcomeOfTasks xmlns:tns="http://xmlns.oracle.com/bpel/workflow/taskService">
+   <tns:outcome>APPROVE</tns:outcome>
+</tns:updateOutcomeOfTasks>

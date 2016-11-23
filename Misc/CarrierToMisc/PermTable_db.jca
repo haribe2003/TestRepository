@@ -1,0 +1,14 @@
+<adapter-config name="PermTable" adapter="Database Adapter" wsdlLocation="PermTable.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/ApMerchDS" UIConnectionName="SOADev" adapterRef=""/>
+  <endpoint-interaction portType="PermTable_ptt" operation="PermTableSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="PermTable.InvcMtchExcpt"/>
+      <property name="QueryName" value="PermTableSelect"/>
+      <property name="MappingsMetaDataURL" value="PermTable-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

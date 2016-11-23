@@ -1,0 +1,24 @@
+Dec 21, 2015 11:51:29 AM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Dec 21, 2015 11:51:29 AM oracle.security.jps.internal.config.xml.XmlConfigurationFactory initDefaultConfiguration
+SEVERE: java.io.FileNotFoundException: .\config\jps-config.xml (The system cannot find the path specified)
+Dec 21, 2015 11:51:29 AM oracle.mds
+NOTIFICATION: Auditing is disabled for component MDS.
+Dec 21, 2015 11:51:30 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:31 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: TaskQueryServiceWrapper.wsdl due to: WSDLException: faultCode=INVALID_WSDL: Error reading import of file:/C:/JDeveloper/mywork/Misc/WithdrawInstances/TaskQueryServiceWrapper.wsdl: oracle.j2ee.ws.wsdl.LocalizedWSDLException: WSDLException: faultCode=PARSER_ERROR: Failed to read wsdl file at: "http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL", caused by: java.net.ConnectException.    : java.net.ConnectException: Connection refused: connect
+Dec 21, 2015 11:51:33 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:33 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Dec 21, 2015 11:51:34 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:35 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:36 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:37 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL: Connection refused: connect
+Dec 21, 2015 11:51:38 AM oracle.fabric.common.wsdl.WSDLManager loadWSDL
+WARNING: WSDL localizedWSDLException at location: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL due to: Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL: Connection refused: connect

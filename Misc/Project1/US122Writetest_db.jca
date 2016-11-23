@@ -1,0 +1,15 @@
+<adapter-config name="US122Writetest" adapter="Database Adapter" wsdlLocation="US122Writetest.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOADev" UIConnectionName="SOADev" adapterRef=""/>
+  <endpoint-interaction portType="US122Writetest_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="US122Writetest.SlsTaxCltRpt"/>
+      <property name="DmlType" value="insert"/>
+      <property name="OutputCompletedXml" value="true"/>
+      <property name="MappingsMetaDataURL" value="US122Writetest-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

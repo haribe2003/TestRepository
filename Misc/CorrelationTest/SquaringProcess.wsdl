@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--########################################################################################-->
+<!--####                                                                                ####-->
+<!--####          THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT MANUALLY MODIFY         ####-->
+<!--#### CHANGES TO THIS FILE MAY PRODUCE UNEXPECTED BEHAVIOR AND WOULD BE OVERWRITTEN  ####-->
+<!--####                                                                                ####-->
+<!--########################################################################################-->
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"  xmlns:tns="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess"  xmlns:tns6="http://xmlns.oracle.com/bpm/bpmobject/DataModule/BusinessObject" >
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess">
+            <xsd:import namespace="http://xmlns.oracle.com/bpm/bpmobject/DataModule/BusinessObject" schemaLocation="businessCatalog/DataModule/BusinessObject.xsd"/>
+            <xsd:element name="sendTaskResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns6:BusinessObject"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="receiveTask">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns6:BusinessObject"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="sendTaskResponse">
+        <wsdl:part name="parameters" element="tns:sendTaskResponse"/>
+    </wsdl:message>
+    <wsdl:message name="receiveTask">
+        <wsdl:part name="parameters" element="tns:receiveTask"/>
+    </wsdl:message>
+    <wsdl:portType name="SquaringProcessPortTypeCallBack">
+        <wsdl:operation name="sendTask">
+            <wsdl:input message="tns:sendTaskResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SquaringProcessPortType">
+        <wsdl:operation name="receiveTask">
+            <wsdl:input message="tns:receiveTask"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <plnk:partnerLinkType name="SquaringProcessPortTypePartnerLinkType">
+        <plnk:role name="SquaringProcessPortTypeProvider">
+            <plnk:portType name="tns:SquaringProcessPortType"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</wsdl:definitions>

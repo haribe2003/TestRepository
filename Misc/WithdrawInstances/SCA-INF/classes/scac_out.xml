@@ -1,0 +1,643 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL']</loc>
+      <line>17</line>
+      <col>30</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='TaskQueryServiceWrapper.wsdl']</loc>
+      <line>19</line>
+      <col>70</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "TaskQueryServiceWrapper.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL']</loc>
+      <line>22</line>
+      <col>30</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskService/TaskServicePort?WSDL" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:reference[@name='AuthenticateService']</loc>
+      <line>39</line>
+      <col>132</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryService" for "AuthenticateService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='AuthenticateService']</loc>
+      <line>39</line>
+      <col>132</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "AuthenticateService":"{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryServicePortSAML" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='AuthenticateService']</loc>
+      <line>39</line>
+      <col>132</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "AuthenticateService":"{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryServicePortSAML" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='AuthenticateService']</loc>
+      <line>39</line>
+      <col>132</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "AuthenticateService":"{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryServicePort" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='AuthenticateService']</loc>
+      <line>39</line>
+      <col>132</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "AuthenticateService":"{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryServicePort" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:reference[@name='TaskService']</loc>
+      <line>57</line>
+      <col>126</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskService" for "TaskService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='TaskService']</loc>
+      <line>57</line>
+      <col>126</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "TaskService":"{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServicePort" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='TaskService']</loc>
+      <line>57</line>
+      <col>126</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "TaskService":"{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServicePort" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='TaskService']</loc>
+      <line>57</line>
+      <col>126</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "TaskService":"{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServicePortSAML" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='TaskService']</loc>
+      <line>57</line>
+      <col>126</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "TaskService":"{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServicePortSAML" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:component[@name='WithdrawInstancesBPELProcess']</loc>
+      <line>33</line>
+      <col>64</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryService" for "AuthenticateService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:component[@name='WithdrawInstancesBPELProcess']</loc>
+      <line>33</line>
+      <col>64</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskService" for "TaskService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>34</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Please check import location or element QNames.</fix>
+      <msg>Error in getting XML input stream: http://wn017a.amer.qahomedepot.com:8001/integration/services/TaskQueryService/TaskQueryService?WSDL: Connection refused: connect</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>36</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check location "WithdrawInstancesBPELProcess.wsdl" and import type "http://schemas.xmlsoap.org/wsdl/"</fix>
+      <msg>Cannot import type "http://schemas.xmlsoap.org/wsdl/" from location "WithdrawInstancesBPELProcess.wsdl"</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>49</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "client:WithdrawInstancesBPELProcess" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "client:WithdrawInstancesBPELProcess" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>52</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:AuthenticateService" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "ns1:AuthenticateService" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>55</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:TaskService" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "ns3:TaskService" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>66</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "client:WithdrawInstancesBPELProcessRequestMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "client:WithdrawInstancesBPELProcessRequestMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>69</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "client:WithdrawInstancesBPELProcessResponseMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "client:WithdrawInstancesBPELProcessResponseMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>71</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:authenticateMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns1:authenticateMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>73</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:authenticateResponseMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns1:authenticateResponseMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>75</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:taskDetailsByIdRequestMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns1:taskDetailsByIdRequestMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>77</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:taskDetailsResponseMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns1:taskDetailsResponseMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>79</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:releaseTaskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:releaseTaskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>81</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:taskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:taskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>83</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:acquireTaskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:acquireTaskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>85</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:taskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:taskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>87</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:withdrawTaskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:withdrawTaskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>89</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:taskMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns3:taskMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>101</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:receive> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>101</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "client:WithdrawInstancesBPELProcess" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "client:WithdrawInstancesBPELProcess" on this &lt;bpel:receive> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>101</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:receive> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>125</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>125</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>125</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>125</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:TaskQueryService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns1:TaskQueryService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>177</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>177</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>177</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>177</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns1:TaskQueryService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns1:TaskQueryService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>195</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>195</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>195</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>195</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:TaskService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns3:TaskService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>212</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>212</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>212</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>212</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:TaskService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns3:TaskService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>231</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>231</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>231</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>231</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "ns3:TaskService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns3:TaskService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>238</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>238</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>238</line>
+      <col/>
+      <file>WithdrawInstancesBPELProcess.bpel</file>
+      <name>WithdrawInstancesBPELProcess.bpel</name>
+      <fix>Make sure that value "client:WithdrawInstancesBPELProcessCallback" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "client:WithdrawInstancesBPELProcessCallback" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='TaskService']</loc>
+      <line>85</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskService" for "WithdrawInstancesBPELProcess" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='TaskService']</loc>
+      <line>85</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskService" for "TaskService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='TaskService']</loc>
+      <line>85</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServiceCallback" for "WithdrawInstancesBPELProcess" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='TaskService']</loc>
+      <line>85</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskService}TaskServiceCallback" for "TaskService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='AuthenticateService']</loc>
+      <line>81</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryService" for "WithdrawInstancesBPELProcess" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='AuthenticateService']</loc>
+      <line>81</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</file>
+      <name>C:\JDeveloper\mywork\Misc\WithdrawInstances\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://xmlns.oracle.com/bpel/workflow/taskQueryService}TaskQueryService" for "AuthenticateService" in WSDL Manager</msg>
+   </Fault>
+</Faults>

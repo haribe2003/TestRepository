@@ -1,0 +1,14 @@
+<adapter-config name="ReadFrtTbl" adapter="Database Adapter" wsdlLocation="ReadFrtTbl.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/ApMerchDS" UIConnectionName="SOADev" adapterRef=""/>
+  <endpoint-interaction portType="ReadFrtTbl_ptt" operation="ReadFrtTblSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="ReadFrtTbl.FrtTrkPodRqst"/>
+      <property name="QueryName" value="ReadFrtTblSelect"/>
+      <property name="MappingsMetaDataURL" value="ReadFrtTbl-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

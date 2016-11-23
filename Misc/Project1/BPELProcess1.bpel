@@ -1,0 +1,62 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Jan 06 22:50:19 EST 2015
+  Author:  I4TR1HS
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+               targetNamespace="http://xmlns.oracle.com/Misc/Project1/BPELProcess1"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Misc/Project1/BPELProcess1"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/Misc/Project1/US122"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/Project1/US122Writetest"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="US122" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="US122Writetest" partnerLinkType="ns2:US122Writetest_plt"
+                 partnerRole="US122Writetest_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Receive1_Read_InputVariable" messageType="ns1:Read_msg"/>
+    <variable name="Invoke1_insert_InputVariable"
+              messageType="ns2:SlsTaxCltRptCollection_msg"/>
+    <variable name="Invoke1_insert_OutputVariable"
+              messageType="ns2:SlsTaxCltRptCollection_msg"/>
+  </variables>
+  <sequence name="main">
+    <receive name="Receive1" createInstance="yes" partnerLink="US122"
+             portType="ns1:Read_ptt" operation="Read"
+             variable="Receive1_Read_InputVariable"/>
+    <assign name="Transform1">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"/>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("xsl/Transformation_1.xsl", $Receive1_Read_InputVariable.body)</from>
+        <to variable="Invoke1_insert_InputVariable"
+            part="SlsTaxCltRptCollection"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke1"
+            partnerLink="US122Writetest" portType="ns2:US122Writetest_ptt"
+            operation="insert" inputVariable="Invoke1_insert_InputVariable"
+            outputVariable="Invoke1_insert_OutputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

@@ -1,0 +1,22 @@
+<?binding.jca US122Writetest_db.jca?>
+<wsdl:definitions name="US122Writetest" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/Project1/US122Writetest" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Misc/Project1/US122Writetest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/US122Writetest">
+    <plt:partnerLinkType name="US122Writetest_plt">
+        <plt:role name="US122Writetest_role">
+            <plt:portType name="tns:US122Writetest_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/US122Writetest" schemaLocation="xsd/US122Writetest_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SlsTaxCltRptCollection_msg">
+        <wsdl:part name="SlsTaxCltRptCollection" element="top:SlsTaxCltRptCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="US122Writetest_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:SlsTaxCltRptCollection_msg"/>
+            <wsdl:output message="tns:SlsTaxCltRptCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

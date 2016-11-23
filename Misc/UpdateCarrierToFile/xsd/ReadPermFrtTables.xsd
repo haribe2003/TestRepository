@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/ReadPermFrtTables" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/ReadPermFrtTables" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ReadPermFrtTablesInput" type="ReadPermFrtTablesInput"/>
+   <xs:complexType name="ReadPermFrtTablesInput">
+      <xs:sequence>
+         <xs:element name="iFrtTrkNum" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="ReadPermFrtTablesOutputCollection" type="ReadPermFrtTablesOutputCollection"/>
+   <xs:complexType name="ReadPermFrtTablesOutputCollection">
+      <xs:sequence>
+         <xs:element name="ReadPermFrtTablesOutput" type="ReadPermFrtTablesOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ReadPermFrtTablesOutput">
+      <xs:sequence>
+         <xs:element name="VCHR_NBR" type="xs:string" nillable="true"/>
+         <xs:element name="INVC_NBR" type="xs:string" nillable="true"/>
+         <xs:element name="PVNDR_NBR" type="xs:string" nillable="true"/>
+         <xs:element name="PO_NBR" type="xs:string" nillable="true"/>
+         <xs:element name="LOC_NBR" type="xs:string" nillable="true"/>
+         <xs:element name="FRT_TRK_NBR" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

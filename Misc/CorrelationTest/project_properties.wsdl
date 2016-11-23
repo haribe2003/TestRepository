@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--########################################################################################-->
+<!--####                                                                                ####-->
+<!--####          THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT MANUALLY MODIFY         ####-->
+<!--#### CHANGES TO THIS FILE MAY PRODUCE UNEXPECTED BEHAVIOR AND WOULD BE OVERWRITTEN  ####-->
+<!--####                                                                                ####-->
+<!--########################################################################################-->
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/CorrelationTest" xmlns:tns3="http://xmlns.oracle.com/bpmn/bpmnProcess/CorrelationProcess"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"  xmlns:tns2="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess"  xmlns:tns="http://xmlns.oracle.com/bpmn/bpmnProcess/CorrelationTest"  xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" >
+    <vprop:property name="number" type="xsd:int"/>
+    <vprop:propertyAlias propertyName="tns:number" part="parameters" messageType="tns2:receiveTask">
+        <vprop:query xmlns:ns="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess" xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/DataModule/BusinessObject">
+            /ns:receiveTask/ns1:BusinessObject/ns1:number
+        </vprop:query>
+    </vprop:propertyAlias>
+    <vprop:propertyAlias propertyName="tns:number" part="parameters" messageType="tns2:sendTaskResponse">
+        <vprop:query xmlns:ns="http://xmlns.oracle.com/bpmn/bpmnProcess/SquaringProcess" xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/DataModule/BusinessObject">
+            /ns:sendTaskResponse/ns1:BusinessObject/ns1:number
+        </vprop:query>
+    </vprop:propertyAlias>
+    <vprop:propertyAlias propertyName="tns:number" part="parameters" messageType="tns3:sendRequestResponse">
+        <vprop:query xmlns:ns="http://xmlns.oracle.com/bpmn/bpmnProcess/CorrelationProcess" xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/DataModule/BusinessObject">
+            /ns:sendRequestResponse/ns1:BusinessObject/ns1:number
+        </vprop:query>
+    </vprop:propertyAlias>
+</wsdl:definitions>

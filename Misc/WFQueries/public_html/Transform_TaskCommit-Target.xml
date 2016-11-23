@@ -1,0 +1,5 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:updateTaskOutcome xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/taskService">
+   <ns5:taskId>taskId5988</ns5:taskId>
+   <ns5:outcome>APPROVE</ns5:outcome>
+</ns5:updateTaskOutcome>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.3.1.v20111018-r10243">
+   <name>ReadFrtTbl-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>ReadFrtTbl.FrtTrkPodRqst</class>
+         <alias>FRT_TRK_POD_RQST</alias>
+         <primary-key>
+            <field table="FRT_TRK_POD_RQST" name="CARR_CD" xsi:type="column"/>
+            <field table="FRT_TRK_POD_RQST" name="FRT_TRK_NBR" xsi:type="column"/>
+            <field table="FRT_TRK_POD_RQST" name="VCHR_NBR" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="ReadFrtTblSelect" xsi:type="read-all-query">
+                  <arguments>
+                     <argument name="frtTrckNum">
+                        <type>java.lang.String</type>
+                     </argument>
+                  </arguments>
+                  <call xsi:type="sql-call">
+                     <sql>SELECT CARR_CD, FRT_TRK_NBR, VCHR_NBR FROM FRT_TRK_POD_RQST WHERE (FRT_TRK_NBR = #frtTrckNum) AND LAST_UPD_PGM_ID like 'Ap%'  AND ((carr_cd = 'FDE' and (length (FRT_TRK_NBR) = 12 or  length (FRT_TRK_NBR) = 15)) OR (carr_cd ='UPSN' and length (FRT_TRK_NBR)>=16 and FRT_TRK_NBR like '1Z%')) AND POD_RQST_SNT_FLG = 'Y'</sql>
+                  </call>
+                  <reference-class>ReadFrtTbl.FrtTrkPodRqst</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>carrCd</attribute-name>
+               <field table="FRT_TRK_POD_RQST" name="CARR_CD" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>frtTrkNbr</attribute-name>
+               <field table="FRT_TRK_POD_RQST" name="FRT_TRK_NBR" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vchrNbr</attribute-name>
+               <field table="FRT_TRK_POD_RQST" name="VCHR_NBR" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdPgmId</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="FRT_TRK_POD_RQST" name="LAST_UPD_PGM_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdTs</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="FRT_TRK_POD_RQST" name="LAST_UPD_TS" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>podRqstSntFlg</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="FRT_TRK_POD_RQST" name="POD_RQST_SNT_FLG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>podRqstRcvdFlg</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="FRT_TRK_POD_RQST" name="POD_RQST_RCVD_FLG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>podCnfmFlg</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="FRT_TRK_POD_RQST" name="POD_CNFM_FLG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="FRT_TRK_POD_RQST"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle9Platform</platform-class>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

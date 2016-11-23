@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://TargetNamespace.com/US122M_PSV_File"
+            targetNamespace="http://TargetNamespace.com/US122M_PSV_File"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="US-ASCII"
+            nxsd:hasHeader="true"
+            nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}"
+>
+
+
+  <xsd:element name="US122M_Root-Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="US122M" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="imagefilename" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="rptdt" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="strst" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="strnbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="cstmrst" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="cstmrcnty" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="cstmrcty" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="cstmrzip" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="cstmrordnbr" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="salesdt" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="origcd" type="xsd:int" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="txamt" type="xsd:decimal" nxsd:style="terminated" nxsd:terminatedBy="|" nxsd:quotedBy="&quot;" />
+              <xsd:element name="txnortrn" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
+<!--NXSDWIZ:C:\JDeveloper\mywork\Misc\Misc\InputFiles\US122.txt:-->
+<!--USE-HEADER:true:-->

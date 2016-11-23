@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Humantask3.task</file>
+      <name>Humantask3.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Humantask3.task</file>
+      <name>Humantask3.task</name>
+      <fix/>
+      <msg>Task owner not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Humantask3.task</file>
+      <name>Humantask3.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Humantask3.task</file>
+      <name>Humantask3.task</name>
+      <fix/>
+      <msg>Payload not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>84</line>
+      <col/>
+      <file>BPELProcess1.bpel</file>
+      <name>BPELProcess1.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "xsd:string" is not compatible with to-spec of "ns2:commentType"</msg>
+   </Fault>
+</Faults>

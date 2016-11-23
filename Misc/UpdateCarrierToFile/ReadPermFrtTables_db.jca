@@ -1,0 +1,13 @@
+<adapter-config name="ReadPermFrtTables" adapter="Database Adapter" wsdlLocation="ReadPermFrtTables.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/ApMerchDSNonXA" UIConnectionName="SOADev" adapterRef=""/>
+  <endpoint-interaction portType="ReadPermFrtTables_ptt" operation="ReadPermFrtTables">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select invc.VCHR_NBR,invc.INVC_NBR,invc.PVNDR_NBR,invc.PO_NBR,invc.LOC_NBR,frt.FRT_TRK_NBR from FRT_TRK_POD_RQST frt, INVC_MTCH_EXCPT invc where  frt.LAST_UPD_PGM_ID like 'Ap%' AND ((frt.carr_cd = 'FDE' and (length (frt.FRT_TRK_NBR) = 12 or  length (frt.FRT_TRK_NBR) = 15)) OR (frt.carr_cd ='UPSN' and length (frt.FRT_TRK_NBR)>=16 and frt.FRT_TRK_NBR like '1Z%') ) AND frt.POD_RQST_SNT_FLG = 'Y' and frt.FRT_TRK_NBR = #iFrtTrkNum and invc.VCHR_NBR = frt.VCHR_NBR"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

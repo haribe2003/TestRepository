@@ -1,0 +1,13 @@
+<adapter-config name="UpdatePotMtchFlgJMS" adapter="JMS Adapter" wsdlLocation="UpdatePotMtchFlgJMS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/jms/UpdateFlexFieldQueueCF" UIJmsProvider="WLSJMS" UIConnectionName="SOA_QA"/>
+  <endpoint-interaction portType="Produce_Message_ptt" operation="Produce_Message">
+    <interaction-spec className="oracle.tip.adapter.jms.outbound.JmsProduceInteractionSpec">
+      <property name="TimeToLive" value="0"/>
+      <property name="PayloadType" value="TextMessage"/>
+      <property name="DeliveryMode" value="Persistent"/>
+      <property name="DestinationName" value="jms/UpdateFlexFieldQueue"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

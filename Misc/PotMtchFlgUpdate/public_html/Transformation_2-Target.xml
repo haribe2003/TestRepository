@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns1:process xmlns:ns1="http://xmlns.oracle.com/WorkflowInjectionServices/ApMerchUpdateFlexFields/UpdateFlexFields">
+   <ns1:FlexFieldQuery>
+      <ns1:FlexFieldName>protectedTextAttribute14</ns1:FlexFieldName>
+      <ns1:FlexFieldValue>VchrNbr525</ns1:FlexFieldValue>
+      <ns1:FlexFieldTableName/>
+      <ns1:CompareOperator>EQ</ns1:CompareOperator>
+      <ns1:JoinOperator>AND</ns1:JoinOperator>
+   </ns1:FlexFieldQuery>
+   <ns1:FlexFieldQuery>
+      <ns1:FlexFieldName>protectedTextAttribute4</ns1:FlexFieldName>
+      <ns1:FlexFieldValue>InvcStat526</ns1:FlexFieldValue>
+      <ns1:FlexFieldTableName/>
+      <ns1:CompareOperator>EQ</ns1:CompareOperator>
+      <ns1:JoinOperator>AND</ns1:JoinOperator>
+   </ns1:FlexFieldQuery>
+   <ns1:FlexFieldQuery>
+      <ns1:FlexFieldName>protectedTextAttribute9</ns1:FlexFieldName>
+      <ns1:FlexFieldValue>PVndrNbr527</ns1:FlexFieldValue>
+      <ns1:FlexFieldTableName/>
+      <ns1:CompareOperator>EQ</ns1:CompareOperator>
+      <ns1:JoinOperator>AND</ns1:JoinOperator>
+   </ns1:FlexFieldQuery>
+   <ns1:FlexFieldUpdate>
+      <ns1:protectedTextAttribute8>-0</ns1:protectedTextAttribute8>
+   </ns1:FlexFieldUpdate>
+</ns1:process>

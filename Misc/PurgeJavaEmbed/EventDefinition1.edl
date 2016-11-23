@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://schemas.oracle.com/events/edl"
+             targetNamespace="http://xmlns.oracle.com/PurgeJavaEmbed/EventDefinition1">
+  <schema-import location="xsd/BPELProcess1.xsd"
+                 namespace="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess1"/>
+  <event-definition name="Event1">
+    <content xmlns:ns0="http://xmlns.oracle.com/Misc/PurgeJavaEmbed/BPELProcess1"
+             element="ns0:process"/>
+  </event-definition>
+</definitions>

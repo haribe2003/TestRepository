@@ -1,0 +1,13 @@
+<adapter-config name="US122" adapter="File Adapter" wsdlLocation="US122.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter"/>
+  <endpoint-interaction portType="Write_ptt" operation="Write">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.FileInteractionSpec">
+      <property name="PhysicalDirectory" value="\\cpemis131\oracleimaging01\Imaging\ProcessMainframeFiles\work"/>
+      <property name="Append" value="false"/>
+      <property name="FileNamingConvention" value="US122_%yyyyMMddHHmmss%.txt"/>
+      <property name="NumberMessages" value="1"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<InvcMtchExcptCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/PermTable">
+   <InvcMtchExcpt>
+      <invcMtchExcptId>0</invcMtchExcptId>
+      <invcNbr>string47</invcNbr>
+      <poNbr>string49</poNbr>
+      <pvndrNbr>string51</pvndrNbr>
+      <vchrNbr>string</vchrNbr>
+   </InvcMtchExcpt>
+   <InvcMtchExcpt>
+      <invcMtchExcptId>0</invcMtchExcptId>
+      <invcNbr>string56</invcNbr>
+      <poNbr>string58</poNbr>
+      <pvndrNbr>string60</pvndrNbr>
+      <vchrNbr>string</vchrNbr>
+   </InvcMtchExcpt>
+   <InvcMtchExcpt>
+      <invcMtchExcptId>0</invcMtchExcptId>
+      <invcNbr>string65</invcNbr>
+      <poNbr>string67</poNbr>
+      <pvndrNbr>string69</pvndrNbr>
+      <vchrNbr>string</vchrNbr>
+   </InvcMtchExcpt>
+</InvcMtchExcptCollection>

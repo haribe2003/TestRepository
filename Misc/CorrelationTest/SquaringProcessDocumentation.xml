@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1.7.0.1.61" fileRevision="20120217"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="SquaringProcess">
+        <topicDocumentations>
+            <topicDocumentation name="SquaringProcess">
+                <descriptions>
+                    <description locale="en">SquaringProcess</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="EVT14584998459030">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="EVT14584998459118">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="ACT1458500063523">
+                <labels>
+                    <label locale="en">ReceiveTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ACT14585002508361">
+                <labels>
+                    <label locale="en">ScriptTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ACT14585005978488">
+                <labels>
+                    <label locale="en">SendTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="EVT14585281450932">
+                <labels>
+                    <label locale="en">CatchEvent</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf15"/>
+            <topicDocumentation name="sf17"/>
+            <topicDocumentation name="sf18"/>
+            <topicDocumentation name="sf19"/>
+            <topicDocumentation name="sf20"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>
